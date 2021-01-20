@@ -1,0 +1,60 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 49d286d885c03762620fc1b66470b4415a95ffaba16e5d0a0cfc279a089dfe2b
+
+name:           damask-esolang
+version:        0.0.0
+synopsis:       a poetic esolang interpreter
+description:    damask-esolang interprets coded transformations in a source-poem to generate a second poem.
+author:         bnspalding
+maintainer:     bnspalding
+build-type:     Simple
+
+library
+  exposed-modules:
+      Damask
+  other-modules:
+      Paths_damask_esolang
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:
+      base >=4.9 && <5
+    , parsec
+    , text
+  default-language: Haskell2010
+
+executable damask
+  main-is: Main.hs
+  other-modules:
+      Paths_damask_esolang
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:
+      base >=4.9 && <5
+    , damask-esolang
+    , parsec
+    , text
+  default-language: Haskell2010
+
+test-suite damask-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      DamaskSpec
+      Paths_damask_esolang
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:
+      base >=4.9 && <5
+    , damask-esolang
+    , hspec
+    , parsec
+    , text
+  default-language: Haskell2010

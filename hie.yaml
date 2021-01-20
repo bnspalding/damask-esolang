@@ -1,0 +1,8 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "damask-esolang:lib"
+    - path: "./test"
+      component: "damask-esolang:test:damask-test"
+    - path: "./app"
+      component: "damask-esolang:exe:damask"
