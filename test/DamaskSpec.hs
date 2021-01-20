@@ -26,7 +26,7 @@ spec = do
         runPoem "hello: world: I love you" `shouldBe` "hello\nworld\nI love you"
       it "trims whitespace beginning a new line" $
         runPoem "hello:  world:\tgoodbye" `shouldBe` "hello\nworld\ngoodbye"
-    describe "em-dash (—) - SHIFT" $ do
+    describe "em dash (—) - SHIFT" $ do
       it "shifts the letters of the left word by the values of the right word" $
         runPoem "aaa—abc" `shouldBe` "bcd"
       it "uses whitespace before the second word as zeros" $
