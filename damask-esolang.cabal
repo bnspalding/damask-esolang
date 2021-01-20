@@ -4,15 +4,24 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 49d286d885c03762620fc1b66470b4415a95ffaba16e5d0a0cfc279a089dfe2b
+-- hash: 62b6c61dd31bff4f67073508fc6a8f7c4d31e81ee15db3f5b641f8f584bfc931
 
 name:           damask-esolang
 version:        0.0.0
 synopsis:       a poetic esolang interpreter
-description:    damask-esolang interprets coded transformations in a source-poem to generate a second poem.
+description:    damask-esolang interprets punctuation in a source-poem as a sequence of  encoded transformations to generate a second poem woven from the elements of the source.
+stability:      experimental
+homepage:       https://github.com/bnspalding/damask-esolang#readme
+bug-reports:    https://github.com/bnspalding/damask-esolang/issues
 author:         bnspalding
 maintainer:     bnspalding
+license:        MIT
+license-file:   LICENSE
 build-type:     Simple
+
+source-repository head
+  type: git
+  location: https://github.com/bnspalding/damask-esolang
 
 library
   exposed-modules:

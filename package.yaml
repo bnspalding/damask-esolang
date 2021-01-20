@@ -1,9 +1,14 @@
 name: damask-esolang
+version: 0.0.0
+license: MIT
 author: bnspalding
+github: bnspalding/damask-esolang
+stability: experimental
 synopsis: a poetic esolang interpreter
 description: >-
-  damask-esolang interprets coded transformations in a source-poem to generate
-  a second poem.
+  damask-esolang interprets punctuation in a source-poem as a sequence of 
+  encoded transformations to generate a second poem woven from the elements of
+  the source.
 
 dependencies:
   - base >= 4.9 && < 5
