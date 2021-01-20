@@ -9,6 +9,11 @@ about the name
 an example of a poem to a poem
 
 ## Operators
+
 comma (,) - FLIP
+
 colon (:) - PUSH
+
 em dash (—) - SHIFT
+
+tab (	) - FIRST

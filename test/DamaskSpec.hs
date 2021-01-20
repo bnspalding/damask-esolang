@@ -25,7 +25,7 @@ spec = do
       it "associates left" $
         runPoem "hello: world: I love you" `shouldBe` "hello\nworld\nI love you"
       it "trims whitespace beginning a new line" $
-        runPoem "hello:  world:\tgoodbye" `shouldBe` "hello\nworld\ngoodbye"
+        runPoem "hello:  world:   goodbye" `shouldBe` "hello\nworld\ngoodbye"
     describe "em dash (—) - SHIFT" $ do
       it "shifts the letters of the left word by the values of the right word" $
         runPoem "aaa—abc" `shouldBe` "bcd"
@@ -39,3 +39,6 @@ spec = do
         runPoem "aaaa—aa" `shouldBe` "bbaa"
       it "pads right with zeros on the left word to the length of the right word" $
         runPoem "aa—aabb" `shouldBe` "bbbb"
+    describe "tab (\t) - FIRST" $ do
+      it "fully evaluates the right side of the expression first" $
+        runPoem "hello:\tworld: goodbye" `shouldBe` "hello\ngoodbye\nworld"
