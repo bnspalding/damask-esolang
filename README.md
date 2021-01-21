@@ -16,4 +16,3 @@ colon (:) - PUSH
 
 em dash (—) - SHIFT
 
-tab (	) - FIRST
