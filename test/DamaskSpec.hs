@@ -32,13 +32,14 @@ spec = do
       it "uses whitespace before the second word as zeros" $
         runPoem "aaa—  c" `shouldBe` "aad"
       it "treats whitespace after the first word as zeroes" $
-        runPoem "a  — abc" `shouldBe` "bbc"
+        runPoem "a  —abc" `shouldBe` "bbc"
       it "wraps from z to a (including zero as space)" $
         runPoem "zzz—abc" `shouldBe` " ab"
       it "operates on the first n characters of the left word" $
         runPoem "aaaa—aa" `shouldBe` "bbaa"
       it "pads right with zeros on the left word to the length of the right word" $
         runPoem "aa—aabb" `shouldBe` "bbbb"
-    describe "tab (\t) - FIRST" $ do
-      it "fully evaluates the right side of the expression first" $
-        runPoem "hello:\tworld: goodbye" `shouldBe` "hello\ngoodbye\nworld"
+    describe "example poem" $ do
+      it "correctly transforms the example poem" $
+        runPoem "aa— b hello, what: another \t goodbye"
+          `shouldBe` "what, ac hello\t goodbye\nanother "
