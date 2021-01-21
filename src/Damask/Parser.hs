@@ -4,7 +4,7 @@ import Data.Functor (($>))
 import qualified Data.Text as T
 import Text.Parsec
 import Text.Parsec.Text
-import Prelude hiding (Word, break)
+import Prelude hiding (break)
 
 type Poem = Expr
 
@@ -14,10 +14,8 @@ data Expr
   | Sequence [Expr]
   | FLIP Expr Expr
   | PUSH Expr
-  | SHIFT Word Word
+  | SHIFT T.Text Expr
   deriving (Show)
-
-newtype Word = Word T.Text deriving (Show)
 
 poem :: Parser Poem
 poem = expr <* eof
@@ -37,11 +35,12 @@ pushExpr = pushOp <*> term
 
 shiftExpr :: Parser Expr
 shiftExpr = do
-  lWord <- (:) <$> letter <*> manyTill litChar (char shiftSym)
-  rWord <-
-    try (count (length lWord) litChar)
-      <|> many1 litChar
-  return $ SHIFT (Word (T.pack lWord)) (Word (T.pack rWord))
+  lWord <- fmap T.pack $ (<>) <$> many1 letter <*> manyTill (char ' ') (char shiftSym)
+  rExpr <-
+    maybeSequence <$> try (many1 (try shiftExpr <|> literalExpr))
+      <|> try (Literal . T.pack <$> count (T.length lWord) litChar)
+      <|> Literal . T.pack <$> many1 litChar
+  return $ SHIFT lWord rExpr
 
 flipOp :: Parser (Expr -> Expr -> Expr)
 flipOp = optionalSpace flipSym $> FLIP
