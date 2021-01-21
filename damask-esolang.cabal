@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 62b6c61dd31bff4f67073508fc6a8f7c4d31e81ee15db3f5b641f8f584bfc931
+-- hash: 9014294af6e6132cb9d536e53907433cb812fbaed07ce9b06e9daae3eb329ff9
 
 name:           damask-esolang
 version:        0.0.0
@@ -26,6 +26,7 @@ source-repository head
 library
   exposed-modules:
       Damask
+      Damask.Parser
   other-modules:
       Paths_damask_esolang
   hs-source-dirs:
