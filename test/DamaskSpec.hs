@@ -39,6 +39,10 @@ spec = do
         runPoem "aaaa—aa" `shouldBe` "bbaa"
       it "pads right with zeros on the left word to the length of the right word" $
         runPoem "aa—aabb" `shouldBe` "bbbb"
+      it "associates right" $
+        runPoem "aaa—aa—aaa" `shouldBe` "ccb"
+      it "only takes one word on the left" $
+        runPoem "ab aa—aa" `shouldBe` "ab bb"
     describe "example poem" $ do
       it "correctly transforms the example poem" $
         runPoem "aa— b hello, what: another \t goodbye"

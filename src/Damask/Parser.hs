@@ -52,7 +52,9 @@ optionalSpace :: Char -> Parser Char
 optionalSpace c = char c <* optional (char ' ')
 
 literalExpr :: Parser Expr
-literalExpr = Literal . T.pack <$> many1 litChar
+literalExpr =
+  Literal . T.pack
+    <$> (try (manyTill litChar (try (lookAhead shiftExpr))) <|> many1 litChar)
 
 break :: Parser Expr
 break = Break <$> (newline <|> char '\t')
