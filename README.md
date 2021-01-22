@@ -32,6 +32,7 @@ world, hello -> hello, world
 
 **colon (:) - PUSH:** push everything after the colon to the end of the poem
 
+In the example below, parentheses are added for clarity in reading break marks.
 ```
 hello: world(\n)goodbye -> hello(\n)goodbye(\n)world
 ```
@@ -64,5 +65,5 @@ world, hello(\t) abc -> hello, world abc
 ```
 
 ```
-hello(\t)aaa—a(\n)world -> hello\tbaa\nworld
+hello(\t)aaa—a(\n)world -> hello(\t)baa(\n)world
 ```
