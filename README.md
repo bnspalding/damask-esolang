@@ -19,6 +19,19 @@ that works entirely in string transformations to produce two-sided poems. Tuning
 the encoded string operations to produce the correct set of affordances will
 come through iterative play.
 
+## Notes
+
+- I think it's more interesting and true to the metaphor 
+to make things totally reversible. No operators that
+delete letters, make shift work on both sides rather
+than only left plus right.
+- figure out easier ways to target a specific length
+of characters. It should be easy to mark what chars
+to operate on.
+- add tools to find shift pairs. Like Brainf***'s
+constant resource, a tool to search a dictionary for
+usable shifts would be great
+
 ## Example
 an example of a poem to a poem
 
