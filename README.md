@@ -28,14 +28,20 @@ than only left plus right.
 - figure out easier ways to target a specific length
 of characters. It should be easy to mark what chars
 to operate on.
-- add tools to find shift pairs. Like Brainf***'s
+- add tools to find shift pairs. Like Brainf\*\*\*'s
 constant resource, a tool to search a dictionary for
 usable shifts would be great
+- use property tests to assert inverse functions / reversible operations
+(FLIP/UNFLIP), (PUSH, UNPUSH)
 
 ## Example
 an example of a poem to a poem
 
 ## Operators
+
+Certain punctuation marks act as transformations on the text of a source-poem.
+These operators and their transformations are detailed below. Because a Damask
+poem is reversible, each operation has an inverse.
 
 **comma (,) - FLIP:** swap all to the left of the comma with all to the right
 
@@ -43,26 +49,40 @@ an example of a poem to a poem
 world, hello -> hello, world
 ```
 
-**colon (:) - PUSH:** push everything after the colon to the end of the poem
+reversed using UNFLIP (a right-associating FLIP). FLIP x UNFLIP = id
 
-In the example below, parentheses are added for clarity in reading break marks.
+? - is UNFLIP necessary? is FLIP its own inverse? this needs to be thought out.
+
+**colon/semicolon (:;) - MOVE:** move the colon and following word to the
+location of the associated semicolon. Leave a semicolon at the location of the
+move.
+
+Colons and semicolons are associated like parentheses: the first of either
+symbol (colon/semicolon) is associated with the last of the other
+(semicolon/colon).
+
+MOVE is its own inverse. MOVE x MOVE = id
+
+**em dash (—) SHIFT:** modify the letters to the right of the em dash by 
+shifting (positively) each of them by the value of the letter in the word to the 
+left side of the dash
+
 ```
-hello: world(\n)goodbye -> hello(\n)goodbye(\n)world
+red— pot -> red—rust
+
+(r+ ) (e+p) (d+u)
+19+0   5+16  4+21
+  r     u     s
+
+The left side of the above SHIFT is 3 characters (red), and so it operates on
+just the first three characters to the right of the em dash ( po).
 ```
 
-**em dash (—) - SHIFT:** modify the word to the left of the em dash by shifting 
-each letter in the word by the value of the letter on the right side of the dash
+reversed using SHIFT-. SHIFT+ x SHIFT- = id
 
-```
-held —   ho world -> hello world
+? - perhaps there is a way to target the right word for shifting instead of the
+left.
 
-(h+ )(e+ )(l+ )(d+h)( +o)
- 8+0  5+0 12+0  4+8  0+15
-  h    e    l    l    o
-
-The left side of the above SHIFT is 5 characters (held ), and so it captures
-just the five characters following (   ho)
-```
 A space is value 0. Values above 26 wrap around.
 
 The left side of a SHIFT (a word) is any number of letters followed by any
@@ -72,6 +92,8 @@ right string is right-padded with zeros to the length of the left word.
 
 **breaks (\n \t) - BREAK:** newlines and tabs act as boundaries for operators
 
+For now, let's call these segments of a poem "threads"
+
 In the examples below, parentheses are added for clarity in reading break marks.
 ```
 world, hello(\t) abc -> hello, world abc
@@ -80,3 +102,17 @@ world, hello(\t) abc -> hello, world abc
 ```
 hello(\t)aaa—a(\n)world -> hello(\t)baa(\n)world
 ```
+
+## Targeting
+
+There should be a better way to modify the selections of operators on a case by
+case basis. Something like thread-local punctuation (. ! ? ...) could be used
+to modify the selections of operators within that thread
+
+
+## Tools
+
+### Shift-Finder
+Also included will be a tool for searching for valid SHIFTS. Given a dictionary
+and an input word (left side) show the word -> word transformations that are
+valid for the right side.
