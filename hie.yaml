@@ -6,3 +6,5 @@ cradle:
       component: "damask-esolang:test:damask-test"
     - path: "./app"
       component: "damask-esolang:exe:damask"
+    - path: "./shift-finder"
+      component: "damask-esolang:exe:shift-finder"
