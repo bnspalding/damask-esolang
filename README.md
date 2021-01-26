@@ -21,7 +21,25 @@ the encoded string operations to produce the correct set of affordances will
 come through iterative play.
 
 ## Example
-an example of a poem to a poem
+
+An example of two-sided poem. This is me messing around and trying to find some
+of the opportunities for play in the operators.
+
+```
+these cold—petal blades, I cut
+through the garden	unwelcome;
+hanging on the breath of winter
+you know how it is: they halt — gate
+yourself	alone, and prepare
+
+------------------------------
+
+I cut, these cold—steel blades
+through the garden	they halt — obey;
+hanging on the breath of winter
+you know how it is: unwelcome
+yourself	and prepare, alone
+```
 
 ## Operators
 
@@ -35,7 +53,7 @@ poem is reversible, each operation has an inverse.
 world, hello -> hello, world
 ```
 
-reversed using UNFLIP (a right-associating FLIP). FLIP x UNFLIP = id
+reversed using UNFLIP (a right-associating FLIP). FLIP ⋅ UNFLIP = id
 
 ? - is UNFLIP necessary? is FLIP its own inverse? this needs to be thought out.
 
@@ -47,7 +65,7 @@ Colons and semicolons are associated like parentheses: the first of either
 symbol (colon/semicolon) is associated with the last of the other
 (semicolon/colon).
 
-MOVE is its own inverse. MOVE x MOVE = id
+MOVE is its own inverse. MOVE ⋅ MOVE = id
 
 **em dash (—) SHIFT:** modify the letters to the right of the em dash by 
 shifting (positively) each of them by the value of the letter in the word to the 
@@ -64,7 +82,7 @@ The left side of the above SHIFT is 3 characters (red), and so it operates on
 just the first three characters to the right of the em dash ( po).
 ```
 
-reversed using SHIFT-. SHIFT+ x SHIFT- = id
+SHIFT is reversed using SHIFTR. SHIFT ⋅ SHIFTR = id
 
 ? - perhaps there is a way to target the right word for shifting instead of the
 left.
