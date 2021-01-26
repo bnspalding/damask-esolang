@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6fe0de52067609735a8920ac224be4cb64163e73f9d66b7a7023636fcb56fc24
+-- hash: 3bb1aad6a6d55d63343f6da5c18871dd0c562d77ac436f1abdd12f3509321213
 
 name:           damask-esolang
 version:        0.0.0
@@ -45,6 +45,20 @@ executable damask
       Paths_damask_esolang
   hs-source-dirs:
       app
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
+  build-depends:
+      base >=4.9 && <5
+    , damask-esolang
+    , parsec
+    , text
+  default-language: Haskell2010
+
+executable shift-finder
+  main-is: Main.hs
+  other-modules:
+      Paths_damask_esolang
+  hs-source-dirs:
+      shift-finder
   ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
   build-depends:
       base >=4.9 && <5

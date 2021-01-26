@@ -24,6 +24,11 @@ executables:
     source-dirs: app
     dependencies:
       - damask-esolang
+  shift-finder:
+    main: Main.hs
+    source-dirs: shift-finder
+    dependencies:
+      - damask-esolang
 
 tests:
   damask-test:

@@ -4,7 +4,8 @@ a poetic esolang for string transformations
 ## Introduction
 Damask (ˈdæ.məsk) interprets punctuation in a source-poem as a sequence of
 encoded transformations to generate a second poem woven from the elements of the
-source.
+source. These transformations are all reversible, such that the generated
+"second poem" can be thought of as a reflection or "other side" of the source.
 
 The language is named for damask fabric, which similarly realizes its pattern
 directly in the interplay of the single warp and weft. When the warp and weft
@@ -18,21 +19,6 @@ change), but I like the metaphor and I'm motivated by the idea of an esolang
 that works entirely in string transformations to produce two-sided poems. Tuning
 the encoded string operations to produce the correct set of affordances will
 come through iterative play.
-
-## Notes
-
-- I think it's more interesting and true to the metaphor 
-to make things totally reversible. No operators that
-delete letters, make shift work on both sides rather
-than only left plus right.
-- figure out easier ways to target a specific length
-of characters. It should be easy to mark what chars
-to operate on.
-- add tools to find shift pairs. Like Brainf\*\*\*'s
-constant resource, a tool to search a dictionary for
-usable shifts would be great
-- use property tests to assert inverse functions / reversible operations
-(FLIP/UNFLIP), (PUSH, UNPUSH)
 
 ## Example
 an example of a poem to a poem
@@ -100,7 +86,7 @@ world, hello(\t) abc -> hello, world abc
 ```
 
 ```
-hello(\t)aaa—a(\n)world -> hello(\t)baa(\n)world
+hello(\t)silk—afar(\n)world -> hello(\t)silk—tomb(\n)world
 ```
 
 ## Targeting
@@ -113,6 +99,23 @@ to modify the selections of operators within that thread
 ## Tools
 
 ### Shift-Finder
-Also included will be a tool for searching for valid SHIFTS. Given a dictionary
-and an input word (left side) show the word -> word transformations that are
-valid for the right side.
+
+Along with the Damask interpreter, `shift-finder/` includes a tool for finding
+valid SHIFTs. Given a dictionary and an input word (the left side of the SHIFT),
+shift-finder will show all words that can come to the right of the em dash that
+will generate other words from the dictionary.
+
+For example,
+```
+> shift-finder "silk" $MY_DICTIONARY
+afar -> tomb
+as -> talk
+j -> bilk
+lice -> drop
+u -> milk
+```
+
+A dictionary is a file containing words, one to a line.
+
+TODO: handle the possibility of spaces in the search space (both left side and
+right side)
